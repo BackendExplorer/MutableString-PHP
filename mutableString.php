@@ -2,7 +2,7 @@
 
 class MutableString {
     
-    private array $chars;
+    private array $chars = [];
 
     public function __construct(string $initialString = ""): void {
         $this->chars = mb_str_split($initialString);
