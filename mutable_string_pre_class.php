@@ -18,7 +18,7 @@ function toString(array $chars): string {
     return implode('', $chars);
 }
 
-function substringChars(array $chars, int $start, ?int $end = null): array {
+function substring(array $chars, int $start, ?int $end = null): array {
     $end = $end ?? count($chars);
     return array_slice($chars, $start, $end - $start);
 }
@@ -36,7 +36,7 @@ appendChar($chars, '!');
 concatChars($chars, [' ', '世', '界']);
 concatChars($chars, " こんにちは");
 
-$sub = substringChars($chars, 6, getLength($chars));
+$sub = substring($chars, 6, getLength($chars));
 
 print_r($chars);                       // ['h', 'e', 'l', 'l', 'o', '!', ' ', '世', '界', ' ', 'こ', 'ん', 'に', 'ち', 'は']
 echo toString($chars) . PHP_EOL;     // "hello! 世界 こんにちは"
