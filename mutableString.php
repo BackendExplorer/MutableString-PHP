@@ -12,6 +12,14 @@ class MutableString {
         $this->chars[] = $char;
     }
 
+    public function length(): int {
+        return count($this->chars);
+    }
+
+    public function __toString(): string {
+        return implode('', $this->chars);
+    }
+
     # start から end までの文字列を持つオブジェクトを返すメソッド
     public function substring(int $start, ?int $end = null): MutableString {
         $end = $end ?? count($this->chars); // end が null の場合は最後まで取得
@@ -28,14 +36,6 @@ class MutableString {
         } else {
             $this->chars = array_merge($this->chars, $input);
         }
-    }
-
-    public function length(): int {
-        return count($this->chars);
-    }
-
-    public function __toString(): string {
-        return implode('', $this->chars);
     }
 }
 
