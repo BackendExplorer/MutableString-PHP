@@ -8,11 +8,11 @@ class MutableString {
         $this->chars = mb_str_split($initialString);
     }
 
-    public function append(string $char): void {
+    public function appendChar(string $char): void {
         $this->chars[] = $char;
     }
 
-    public function length(): int {
+    public function getLength(): int {
         return count($this->chars);
     }
 
@@ -41,11 +41,11 @@ class MutableString {
 
 // 利用例
 $mutable = new MutableString("hello");
-$mutable->append('!');
+$mutable->appendChar('!');
 $mutable->concat([' ', '世', '界']);
 $mutable->concat(" こんにちは");
 
-$subMutable = $mutable->substring(6, $mutable->length());
+$subMutable = $mutable->substring(6, $mutable->getLength());
 echo $mutable . PHP_EOL;         // "hello! 世界 こんにちは"
 echo $subMutable . PHP_EOL;      // " 世界 こんにちは"
-echo $mutable->length();         // 15
+echo $mutable->getLength();         // 15
