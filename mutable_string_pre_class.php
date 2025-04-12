@@ -31,7 +31,7 @@ function concat_chars(array &$chars, array|string $input): void {
 }
 
 // 利用例
-create_chars(initialString: "hello", chars: $chars);
+create_chars("hello", $chars);
 append_char($chars, '!');
 concat_chars($chars, [' ', '世', '界']);
 concat_chars($chars, " こんにちは");
