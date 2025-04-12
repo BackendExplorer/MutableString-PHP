@@ -8,8 +8,8 @@ class MutableString {
         $this->chars = mb_str_split($initialString);
     }
 
-    public function append(string $c): void {
-        $this->chars[] = $c;
+    public function append(string $char): void {
+        $this->chars[] = $char;
     }
 
     # start から end までの文字列を持つオブジェクトを返すメソッド
