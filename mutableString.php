@@ -27,8 +27,14 @@ class MutableString {
             implode('', array_slice($this->chars, $start, $end - $start))
         );
     }
+
+    // public function substring(int $start, ?int $end = null): array {
+    //     $end = $end ?? count($this->chars);
+    //     return array_slice($this->chars, $start, $end - $start);
+    // }
+
     
-    public function concat(array|string|MutableString $input): void {
+    public function concatChar(array|string|MutableString $input): void {
         if ($input instanceof MutableString) {
             $this->chars = array_merge($this->chars, $input->chars);
         } elseif (is_string($input)) {
@@ -42,8 +48,8 @@ class MutableString {
 // 利用例
 $mutable = new MutableString("hello");
 $mutable->appendChar('!');
-$mutable->concat([' ', '世', '界']);
-$mutable->concat(" こんにちは");
+$mutable->concatChar([' ', '世', '界']);
+$mutable->concatChar(" こんにちは");
 
 $subMutable = $mutable->substring(6, $mutable->getLength());
 echo $mutable . PHP_EOL;         // "hello! 世界 こんにちは"
