@@ -8,6 +8,10 @@ class MutableString {
         $this->chars = mb_str_split($initialString);
     }
 
+    public function getChars(): array {
+        return $this->chars;
+    }
+
     public function appendChar(string $char): void {
         $this->chars[] = $char;
     }
@@ -35,12 +39,12 @@ class MutableString {
 
     
     public function concatChar(array|string|MutableString $input): void {
-        if ($input instanceof MutableString) {
-            $this->chars = array_merge($this->chars, $input->chars);
-        } elseif (is_string($input)) {
+        if (is_string($input)) {
             $this->chars = array_merge($this->chars, mb_str_split($input));
-        } else {
+        } elseif (is_array($input)) {
             $this->chars = array_merge($this->chars, $input);
+        } elseif ($input instanceof MutableString) {
+            $this->chars = array_merge($this->chars, $input->getChars());
         }
     }
 }
