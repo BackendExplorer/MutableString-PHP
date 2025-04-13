@@ -25,9 +25,10 @@ function substring(array $chars, int $start, ?int $end = null): array {
 
 function concatChars(array &$chars, array|string $input): void {
     if (is_string($input)) {
-        $input = mb_str_split($input);
+        $chars = array_merge($chars, mb_str_split($input));
+    }else {
+        $chars = array_merge($chars, $input);
     }
-    $chars = array_merge($chars, $input);
 }
 
 // 利用例
